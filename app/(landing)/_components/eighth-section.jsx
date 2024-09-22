@@ -1,7 +1,5 @@
 'use client';
-import { PiArrowRight } from "react-icons/pi";
 import Image from "next/image";
-
 
 const GetStartedFree = () => {
     return (
@@ -14,16 +12,8 @@ const GetStartedFree = () => {
             Never lose a great idea again. Capture, organize, and share with
             Space.
           </div>
-          <div
-            className="text-sky-500 flex items-center hover:underline hover:cursor-pointer"
-            onClick={() => (window.location.href = "https://www.notion.so/")}
-          >
-            Get started for free
-            <PiArrowRight className="ml-3 text-sm " />
-          </div>
 
-          <Image
-            src="/assets/MessyDoodle.svg"
+          <Image src="/assets/MessyDoodle.svg"
             alt="hero image"
             width={1000}
             height={1000}

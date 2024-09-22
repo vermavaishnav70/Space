@@ -1,10 +1,13 @@
 "use client";
-
+import { useConvexAuth } from "convex/react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { Spinner } from "@/components/spinner";
+import { SignInButton, useAuth } from "@clerk/nextjs";
+
 import {
   PiArrowRight,
   PiBookOpenTextLight,
@@ -73,6 +76,7 @@ const tabs = [
 const HeroSection = () => {
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const isSmallScreen = useMediaQuery({ maxWidth: 767 });
+  const { isSignedIn, isLoaded } = useAuth();
 
   return (
     <div className="md:items-center flex flex-col">
@@ -85,16 +89,30 @@ const HeroSection = () => {
       </p>
 
       <div className="flex gap-4 pt-6 items-center justify-center">
-        <Link href="/">
-          <Button className="py-1">
-            <div className="flex items-center justify-center">
-              <div className="text-lg">Get Space free</div>
-              <div>
-                <PiArrowRight className="ml-2" />
+        {!isLoaded && <Spinner size="lg" />}
+        {!isSignedIn && isLoaded && (
+          <>
+            <SignInButton mode="modal">
+              <Button className="py-1">
+                <div className="flex items-center justify-center">
+                  <div className="text-lg">Get Space free</div>
+                  <div>
+                    <PiArrowRight className="ml-2" />
+                  </div>
+                </div>
+              </Button>
+            </SignInButton>
+          </>
+        )}
+        {isSignedIn && isLoaded && (
+          <Link href="/document">
+            <Button className="py-1">
+              <div className="flex items-center justify-center">
+                <div className="text-lg">Get Space free</div>
               </div>
-            </div>
-          </Button>
-        </Link>
+            </Button>
+          </Link>
+        )}
       </div>
 
       <div className="pt-10 xl:pt-20 items-center justify-center">
