@@ -4,7 +4,7 @@ import { api } from "@/convex/_generated/api";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
 import { useToast } from "@/hooks/use-toast";
-
+import Image from "next/image";
 const DashBoard = () => {
   const { toast } = useToast();
   const { user } = useUser();
@@ -29,14 +29,14 @@ const DashBoard = () => {
   };
   return (
     <div className="h-full flex flex-col items-center justify-center gap-4 ">
-      <img
+      <Image
         src="https://zotion-app.vercel.app/empty.svg"
         alt="Doodle illustration"
         className="dark:hidden"
         width="300"
         height="300"
       />
-      <img
+      <Image
         src="https://zotion-app.vercel.app/empty-dark.svg"
         alt="Doodle illustration"
         className="hidden dark:block"
@@ -45,7 +45,7 @@ const DashBoard = () => {
       />
 
       <p className="text-3xl font-bold px-4  ">
-        Welcome to {user.fullName || user.username}'s Space
+        Welcome to {user.fullName || user.username} Space
       </p>
       <Button
         onClick={() => {
