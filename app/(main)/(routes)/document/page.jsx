@@ -45,7 +45,7 @@ const DashBoard = () => {
       />
 
       <p className="text-3xl font-bold px-4  ">
-        Welcome to {user.fullName || user.username} Space
+        Welcome to {user.fullName || user.username}'s Space
       </p>
       <Button
         onClick={() => {

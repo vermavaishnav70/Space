@@ -1,7 +1,7 @@
 
 "use client";
 
-// import { ConfirmModal } from "@/components/modals/ConfirmModal";
+import { ConfirmModal } from "@/components/modals/ConfirmModal";
 import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
@@ -62,7 +62,7 @@ export const Banner = ({ documentId }) => {
       >
         Restore page
       </Button>
-      {/* <ConfirmModal onConfirm={onRemove}>
+      <ConfirmModal onConfirm={onRemove}>
         <Button
           size="sm"
           variant="outline"
@@ -70,7 +70,7 @@ export const Banner = ({ documentId }) => {
         >
           Delete forever
         </Button>
-      </ConfirmModal> */}
+      </ConfirmModal>
     </div>
   );
 };

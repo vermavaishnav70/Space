@@ -25,7 +25,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-// import { useToast } from "@/hooks/use-toast";
+
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import DocumentList from "./documentList";
@@ -145,7 +145,7 @@ const Navigation = () => {
       });
   };
   return (
-    <>
+    <div>
       <aside
         ref={sidebarRef}
         className={cn(
@@ -162,25 +162,12 @@ const Navigation = () => {
             isMobile && "opacity-100"
           )}
         >
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <ChevronsLeft className="h-6 w-6" />
-              </TooltipTrigger>
-              <TooltipContent align="start" side="right">
-                <Label className="text-muted-foreground">Collapse</Label>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <ChevronsLeft className="h-6 w-6" />
         </div>
         <div>
           <UserItem />
           <Item label="Search" Icon={Search} isSearch onClick={search.onOpen} />
-          <Item
-            label="New Page"
-            Icon={PlusCircle}
-            onClick={handleCreate}
-          />
+          <Item label="New Page" Icon={PlusCircle} onClick={handleCreate} />
           <Item label="Settings" Icon={Settings} onClick={settings.onOpen} />
         </div>
         <div className="mt-4">
@@ -213,23 +200,20 @@ const Navigation = () => {
         )}
       >
         {!!params.documentId ? (
-          <Navbar 
-            ResetWidth={resetWidth}
-            isCollapsed={isCollapsed}
-          />
-        ) :(
-        <nav className="bg-transparent px-3 py-2 w-full">
-          {isCollapsed && (
-            <MenuIcon
-              onClick={() => resetWidth()}
-              role="button"
-              className="h-6 w-6 text-muted-foreground"
-            />
-          )}
-        </nav> 
+          <Navbar ResetWidth={resetWidth} isCollapsed={isCollapsed} />
+        ) : (
+          <nav className="bg-transparent px-3 py-2 w-full">
+            {isCollapsed && (
+              <MenuIcon
+                onClick={() => resetWidth()}
+                role="button"
+                className="h-6 w-6 text-muted-foreground"
+              />
+            )}
+          </nav>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

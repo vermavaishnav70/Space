@@ -8,32 +8,35 @@ import { useState, useRef } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import TextareaAutosize from "react-textarea-autosize";
+import { useCoverImg } from "@/hooks/use-cover-img";
 export const Toolbar = ({ initialData, preview }) => {
   const inputRef = useRef(null);
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(initialData.title || "Untitled");
   const update = useMutation(api.documents.update);
   const removeIcon = useMutation(api.documents.removeIcon);
+  const coverImage = useCoverImg();
   const enableInput = () => {
     if (preview) return;
     setIsEditing(true);
     setTimeout(() => {
       setValue(initialData.title);
       inputRef.current?.focus();
+      inputRef.current?.setSelectionRange(0, inputRef.current.value.length);
     }, 0);
   };
 
   const disabledInput = () => {
     setIsEditing(false);
   };
-  const onInput = (value)=>{
+  const onInput = (value) => {
     setValue(value);
+    const title = value.trim() || "Untitled";
     update({
-      id: initialData.id,
-      title: value || "Untitled",     
-    })
-  }
-
+      id: initialData._id,
+      title: title,
+    });
+  };
   const onKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -43,7 +46,7 @@ export const Toolbar = ({ initialData, preview }) => {
   const onIconSelect = (icon) => {
     update({
       id: initialData._id,
-      icon,
+      icon: icon,
     });
   };
   const onRemoveIcon = () => {
@@ -89,6 +92,7 @@ export const Toolbar = ({ initialData, preview }) => {
         )}
         {!initialData.coverImage && !preview && (
           <Button
+            onClick={coverImage.onOpen}
             className="text-xs text-muted-foreground"
             variant="ghost"
             size="sm"

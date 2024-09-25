@@ -9,7 +9,7 @@ import Footer from "@/components/footer";
 
 const LandingPage = () => {
     return ( 
-    <div className="">
+    <div>
         <Navbar />
         <HeroSection />
         <ThirdSection />

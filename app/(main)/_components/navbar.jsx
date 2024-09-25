@@ -5,7 +5,6 @@ import { MenuIcon } from "lucide-react";
 import { Title } from "./title";
 import { Banner } from "./Banner";
 import { Menu } from "./Menu";
-// import { Menu } from "./menu";
 // import { Publish } from "./Publish";
 export const Navbar = ({ isCollapsed, ResetWidth }) => {
   const params = useParams();
