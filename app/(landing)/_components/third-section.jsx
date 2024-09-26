@@ -26,6 +26,20 @@ const ThirdSection = () => {
                 xl:w-1/3
                 w-4/5
                 scale-150
+                dark:hidden
+                "
+        />
+        <Image
+          src="/assets/canva-logo-dark.png"
+          alt="Canva logo"
+          width={1000}
+          height={1000}
+          className="pt-10 xl:pt-10 
+                xl:w-1/3
+                w-4/5
+                scale-150
+                hidden
+                dark:block
                 "
         />
         <div
@@ -34,8 +48,8 @@ const ThirdSection = () => {
             font.className
           )}
         >
-          &quot;Get rid of nearly a dozen different tools because of what
-          Space will do for you.&quot;
+          &quot;Get rid of nearly a dozen different tools because of what Space
+          will do for you.&quot;
         </div>
       </div>
     );

@@ -17,7 +17,7 @@ const GetStartedFree = () => {
             alt="hero image"
             width={1000}
             height={1000}
-            className="w-80 pt-10"
+            className="w-80 pt-10 dark:invert dark:sepia-0 dark:brightness-100 dark:contrast-200"
           />
         </div>
       </>

@@ -69,7 +69,7 @@ const FourthSection = () => {
                 index === 0
                   ? "xl:col-span-4 xl:row-span-3 md:col-span-2 flex-col xl:flex-col"
                   : "xl:col-span-2 xl:row-span-3 flex-col"
-              } bg-[#f6f5f4] p-6 rounded-xl flex`}
+              } bg-[#f6f5f4] p-6 rounded-xl flex dark:bg-background`}
             >
               <div className="flex flex-col">
                 {tab.icon}
@@ -83,7 +83,7 @@ const FourthSection = () => {
                     alt={`${tab.images[activeImageIndex].title} Image`}
                     width={500}
                     height={500}
-                    className="flex justify-center my-10 xl:my-16 rounded-xl mx-auto"
+                    className="flex justify-center my-10 xl:my-16 rounded-xl mx-auto dark:invert dark:sepia-0 dark:brightness-100 dark:contrast-200"
                   />
                   <div className="grid grid-cols-5 lg:grid-cols-5 xl:grid-cols-6 xl:w-1/2 mx-auto gap-1 xl:space-x-2">
                     {tab.images.map((image, imgIndex) => (
@@ -92,8 +92,8 @@ const FourthSection = () => {
                         onClick={() => setActiveImageIndex(imgIndex)}
                         className={`${
                           imgIndex === activeImageIndex
-                            ? "rounded-md bg-[#dbd9d9] items-center justify-center flex p-1"
-                            : "rounded-md p-1 items-center justify-center bg-[#f6f5f4] hover:bg-[#eae7e7]"
+                            ? "rounded-md bg-[#dbd9d9] dark:bg-[#2a2a2a] items-center justify-center flex p-1"
+                            : "rounded-md p-1 items-center justify-center bg-[#f6f5f4] hover:bg-[#eae7e7] dark:bg-background dark:hover:bg-[#2a2a2a]"
                         }`}
                       >
                         <div className="text-sm items-center justify-center flex">
@@ -111,7 +111,7 @@ const FourthSection = () => {
                     alt={`${tab.header} Image`}
                     width={500}
                     height={500}
-                    className="mt-10 rounded-xl"
+                    className="mt-10 rounded-xl dark:invert dark:sepia-0 dark:brightness-100 dark:contrast-200"
                   />
                 </div>
               )}

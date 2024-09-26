@@ -8,12 +8,12 @@ export default function Home() {
   const { setTheme } = useTheme();
   const pathname = usePathname();
 
-  useEffect(() => {
-    // Force light theme on landing page
-    if (pathname === "/") {
-      setTheme("light");
-    }
-  }, [pathname, setTheme]);
+  // useEffect(() => {
+  //   // Force light theme on landing page
+  //   if (pathname === "/") {
+  //     setTheme("light");
+  //   }
+  // }, [pathname, setTheme]);
 
   return <LandingPage />;
 }

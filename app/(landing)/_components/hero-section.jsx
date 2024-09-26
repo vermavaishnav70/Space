@@ -7,7 +7,6 @@ import { useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Spinner } from "@/components/spinner";
 import { SignInButton, useAuth } from "@clerk/nextjs";
-
 import {
   PiArrowRight,
   PiBookOpenTextLight,
@@ -23,8 +22,7 @@ const tabs = [
     ),
     name: "Collaboration",
     feature: "Seamless Teamwork",
-    description:
-      "Enhance team productivity with collaborative features",
+    description: "Enhance team productivity with collaborative features",
     more: (
       <div className="text-purple-600 flex items-center">
         Learn more <PiArrowRight className="ml-1 text-sm" />
@@ -79,7 +77,7 @@ const HeroSection = () => {
   const { isSignedIn, isLoaded } = useAuth();
 
   return (
-    <div className="md:items-center flex flex-col">
+    <div className="md:items-center flex flex-col bg-background text-foreground">
       <div className="font-medium 2xl:w-1/3 md:w-2/3 xl:w-1/2 lg:px-0 px-8 text-5xl xl:text-6xl flex justify-center xl:font-medium xl:pt-14 text-center pt-6">
         Write, plan, share
       </div>
@@ -91,18 +89,16 @@ const HeroSection = () => {
       <div className="flex gap-4 pt-6 items-center justify-center">
         {!isLoaded && <Spinner size="lg" />}
         {!isSignedIn && isLoaded && (
-          <>
-            <SignInButton mode="modal">
-              <Button className="py-1">
-                <div className="flex items-center justify-center">
-                  <div className="text-lg">Get Space free</div>
-                  <div>
-                    <PiArrowRight className="ml-2" />
-                  </div>
+          <SignInButton mode="modal">
+            <Button className="py-1">
+              <div className="flex items-center justify-center">
+                <div className="text-lg">Get Space free</div>
+                <div>
+                  <PiArrowRight className="ml-2" />
                 </div>
-              </Button>
-            </SignInButton>
-          </>
+              </div>
+            </Button>
+          </SignInButton>
         )}
         {isSignedIn && isLoaded && (
           <Link href="/document">
@@ -118,10 +114,10 @@ const HeroSection = () => {
       <div className="pt-10 xl:pt-20 items-center justify-center">
         <Image
           src="/assets/ReadingSideDoodle.svg"
-          alt="hero image"
+          alt="Illustration of reading in a cozy environment"
           width={1000}
           height={1000}
-          className="flex items-center justify-center mx-auto w-60 xl:w-80"
+          className="flex items-center justify-center mx-auto w-60 xl:w-80 dark:invert dark:sepia-0 dark:brightness-100 dark:contrast-200"
         />
       </div>
 
@@ -133,8 +129,8 @@ const HeroSection = () => {
                 key={tab.name}
                 className={`flex p-1 md:p-8 cursor-pointer ${
                   activeTab.name === tab.name
-                    ? "rounded-md md:rounded-xl bg-[#f6f5f4] md:bg-white border-gray-200 md:border items-center justify-center flex p-1"
-                    : "md:bg-[#f6f5f4] rounded-md xl:rounded-xl p-1 items-center justify-center hover:bg-[#eae7e7]"
+                    ? "rounded-md md:rounded-xl bg-[#f6f5f4] md:bg-white border-gray-200 md:border items-center justify-center flex p-1 dark:bg-[#2b2b2b] dark:md:bg-background dark:border-gray-700"
+                    : "md:bg-[#f6f5f4] dark:md:bg-background rounded-md xl:rounded-xl p-1 items-center justify-center hover:bg-[#eae7e7] dark:hover:bg-[#2b2b2b]"
                 }`}
                 onClick={() => setActiveTab(tab)}
               >
@@ -157,7 +153,7 @@ const HeroSection = () => {
                   width={1025}
                   height={500}
                   alt="logo"
-                  className="w-full border p-20 xl:p-40 rounded-xl"
+                  className="w-full border p-20 xl:p-40 rounded-xl dark:bg-[#1a1a1a] dark:invert dark:sepia dark:brightness-100 dark:contrast-200"
                 />
               </div>
             )}
@@ -170,8 +166,8 @@ const HeroSection = () => {
               key={tab.name}
               className={`xl:flex justify-center space-x-4 xl:pt-4 sm:my-10 xl:my-0 w-60 h-36 ${
                 activeTab === tab
-                  ? "border rounded-xl pt-2 bg-white"
-                  : "shadow-md rounded-xl pt-2 bg-[#f6f5f4] m"
+                  ? "border rounded-xl pt-2 bg-white dark:bg-[#2a2a2a] shadow-md"
+                  : "shadow-md rounded-xl pt-2 bg-[#f6f5f4] dark:bg-[#1a1a1a] m"
               }`}
               onMouseEnter={() => setActiveTab(tab)}
             >
@@ -179,8 +175,6 @@ const HeroSection = () => {
                 <div className="flex items-center">
                   <div>{tab.icon}</div>
                   <div className="text-2xl font-medium">{tab.name}</div>
-
-                  {/* Render feature tag only for "AI" tab */}
                   {tab.name === "AI" && (
                     <div className="text-xs font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded-full ml-2">
                       {tab.feature}
@@ -190,7 +184,6 @@ const HeroSection = () => {
 
                 <div className="flex flex-col text-sm mt-2">
                   <div>
-                    {/* Only animate the description */}
                     <div
                       className={`transition-transform duration-200 ${
                         activeTab === tab ? "transform translate-y-2" : ""
@@ -200,7 +193,6 @@ const HeroSection = () => {
                     </div>
                   </div>
 
-                  {/* Conditional rendering for "Learn more" link */}
                   {activeTab === tab && (
                     <div className="text-sm mt-2">{tab.more}</div>
                   )}
@@ -220,7 +212,7 @@ const HeroSection = () => {
               width={500}
               height={500}
               alt="logo"
-              className="w-full p-20 xl:p-40 shadow-md rounded-xl bg-[#f6f5f4]"
+              className="w-full p-20 xl:p-40 shadow-md rounded-xl bg-[#f6f5f4] dark:bg-foreground dark:invert dark:sepia-0 dark:brightness-100 dark:contrast-200"
             />
           </div>
         )}

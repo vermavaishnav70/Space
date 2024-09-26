@@ -10,7 +10,7 @@ const Footer = () => {
             width={1025}
             height={500}
             alt="logo"
-            className=" w-28 "
+            className=" w-28 dark:invert "
           />
           <div className="flex  space-x-2"></div>
         </div>

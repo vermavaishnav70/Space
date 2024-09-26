@@ -2,12 +2,35 @@
 
 import { useTheme } from "next-themes";
 import { Switch } from "./ui/switch";
+import { useState } from "react";
+import { useEffect } from "react";
+export const ModeToggle = () => {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [isDark, setIsDark] = useState(theme === "dark"); // Set initial state based on current theme
 
-export function ModeToggle() {
-  const { setTheme } = useTheme();
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  return (<>
-      <Switch checked={useTheme().resolvedTheme === "dark"} onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}/> 
-    </>
+  if (!mounted) {
+    return null;
+  }
+
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+      setIsDark(true);
+    } else {
+      setTheme("light");
+      setIsDark(false);
+    }
+  };
+
+  return (
+    <Switch
+      checked={isDark}
+      onCheckedChange={toggleTheme}
+    />
   );
-}
+};

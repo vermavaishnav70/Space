@@ -2,7 +2,7 @@ import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
-
+import "./prosemirror.css";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { EdgeStoreProvider } from "@/lib/edgestore";
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ConvexClientProvider>
           {/* <EdgeStoreProvider> */}
-          <ThemeProvider  attribute="class">
+          <ThemeProvider enableSystem={true} attribute="class">
           <Toaster position="bottom-center" />
           {children}
           <ModalProvider />

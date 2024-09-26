@@ -74,11 +74,9 @@ const FifthSection = () => {
         
                 ${
                   activeTab.name === tab.name
-                  ? "rounded-md md:rounded-xl bg-[#f6f5f4]  md:bg-white border-gray-200 md:border items-center justify-center flex p-1 "
-                  : "md:bg-[#f6f5f4]   rounded-md xl:rounded-xl p-1 items-center justify-center hover:bg-[#eae7e7] "
-                } `
-            }
-                
+                    ? "rounded-md md:rounded-xl bg-[#f6f5f4]  md:bg-white border-gray-200 md:border items-center justify-center flex p-1 dark:bg-background dark:border-gray-700"
+                    : "md:bg-[#f6f5f4] rounded-md xl:rounded-xl p-1 items-center justify-center hover:bg-[#eae7e7] dark:bg-background dark:hover:bg-[#2b2b2b]"
+                } `}
             onClick={() => setActiveTab(tab)}
           >
             <div className="flex flex-col   items-center md:justify-center mx-auto">
@@ -106,8 +104,8 @@ const FifthSection = () => {
              p-20
              xl:p-40
              rounded-xl
-          
-             
+              dark:invert dark:sepia-0 dark:brightness-100 dark:contrast-200
+              dark:border-gray-600
                 "
             />
           </div>

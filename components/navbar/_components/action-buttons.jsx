@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
 import { Spinner } from "@/components/spinner";
 import Link from "next/link";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const ActionButtons = () => {
   const { isSignedIn, isLoaded } = useAuth();
@@ -11,6 +12,9 @@ const ActionButtons = () => {
     <div className="pr-2">
       <div className="items-center justify-center flex">
         <div className="flex xl:space-x-4">
+          <div className="text-sm font-medium text-gray-500 flex items-center">
+          <ModeToggle  />
+          </div>
           {!isLoaded && <Spinner />}
           {!isSignedIn && isLoaded && (
             <>

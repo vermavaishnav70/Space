@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes"; // import useTheme hook
 import ActionButtons from "./_components/action-buttons";
 import Logo from "./_components/logo";
 import { Menu } from "./_components/menu";
+
 const Navbar = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
+  const { theme } = useTheme(); // access current theme
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,14 +27,12 @@ const Navbar = () => {
   }, []);
 
   const navbarClasses = `
-    flex items-center justify-between space-x-10 bg-white  h-14
-    sticky top-0 z-50 ${
-      hasScrolled ? "shadow-md border-b border-gray-200" : ""
-    } 
-  `;
+    flex items-center justify-between space-x-10 h-14
+    sticky top-0 z-50 ${hasScrolled ? "shadow-md border-b" : ""} 
+`;
 
   return (
-    <div className={navbarClasses}>
+    <div className={navbarClasses+" bg-background dark:bg-background"} >
       <div className="flex items-center justify-center">
         <Logo />
         <Menu />
