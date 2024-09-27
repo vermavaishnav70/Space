@@ -1,3 +1,4 @@
+'use client';
 import Navbar from "@/components/navbar/navbar";
 import HeroSection from "./_components/hero-section";
 import ThirdSection from "./_components/third-section";

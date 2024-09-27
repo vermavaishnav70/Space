@@ -1,10 +1,10 @@
 "use client";
-
 import { UploadCloudIcon, X } from "lucide-react";
 import React, { useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 import { twMerge } from "tailwind-merge";
 import { Spinner } from "./spinner";
+import Image from "next/image"; // Import the Next.js Image component
 
 const variants = {
   base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[200px] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out",
@@ -124,10 +124,12 @@ const SingleImageDropzone = React.forwardRef(
           <input ref={ref} {...getInputProps()} />
 
           {imageUrl ? (
-            <img
+            <Image
               className="h-full w-full rounded-md object-cover"
               src={imageUrl}
-              alt={acceptedFiles[0]?.name}
+              alt={acceptedFiles[0]?.name || "Uploaded image"} // Use alt text as a fallback
+              layout="fill" // Next.js optimization feature for responsive images
+              objectFit="cover" // Ensures the image maintains its aspect ratio
             />
           ) : (
             <div className="flex flex-col items-center justify-center text-xs text-gray-400">
