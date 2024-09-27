@@ -1,22 +1,22 @@
 "use client";
 import { Spinner } from "@/components/spinner";
-import { useAuth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import Navigation from "./_components/navigation";
 import { SearchCommand } from "@/components/search-command";
+import { useConvexAuth } from "convex/react";
 
-const MainLayout = ({ children }) => {
-  const { isSignedIn, isLoaded } = useAuth();
+const MainLayout = ({ children}) => {
+  const { isAuthenticated, isLoading } = useConvexAuth();
 
-  if (!isLoaded) {
+  if (isLoading) {
     return (
-      <div className="h-full flex justify-center items-center">
+      <div className="flex h-full items-center justify-center">
         <Spinner size="icon" />
       </div>
     );
   }
 
-  if (!isSignedIn) {
+  if (!isAuthenticated) {
     return redirect("/");
   }
 
@@ -26,7 +26,7 @@ const MainLayout = ({ children }) => {
       <main className="h-full flex-1 overflow-y-auto">
         <SearchCommand />
         {children}
-        </main>
+      </main>
     </div>
   );
 };

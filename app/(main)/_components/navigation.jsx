@@ -140,7 +140,7 @@ const Navigation = () => {
       });
   };
   return (
-    <div>
+    <>
       <aside
         ref={sidebarRef}
         className={cn(
@@ -213,7 +213,7 @@ const Navigation = () => {
           </nav>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
