@@ -2,7 +2,6 @@ import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
-import "./prosemirror.css";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { EdgeStoreProvider } from "@/lib/edgestore";
@@ -16,16 +15,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en">
       <body className={inter.className}>
         <ConvexClientProvider>
-          {/* <EdgeStoreProvider> */}
+          <EdgeStoreProvider>
           <ThemeProvider enableSystem={true} attribute="class">
           <Toaster position="bottom-center" />
           {children}
           <ModalProvider />
           </ThemeProvider>
-          {/* </EdgeStoreProvider> */}
+          </EdgeStoreProvider>
         </ConvexClientProvider>
       </body>
     </html>

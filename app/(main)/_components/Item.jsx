@@ -44,7 +44,19 @@ export const Item = ({
   const onArchive = (event) => {
     event.stopPropagation();
     if (!id) return;
-    const promise = archive({ id });
+    const promise = archive({ id }).then(() => {
+      router.push("/document");
+      toast({
+        title: "Page moved to trash",
+        description: "Your page was moved to trash successfully",
+      });
+    }).catch((err) => {
+      toast({
+        title: "Error",
+        description:
+          "An error occurred while deleting your document please try again later",
+      });
+    })
   };
   const handleExpand = (event) => {
     event.stopPropagation();
@@ -60,7 +72,7 @@ export const Item = ({
         if (!expanded) {
           onExpand?.();
         }
-        // router.push(`/document/${documentId}`);
+        router.push(`/document/${documentId}`);
         toast({
           title: "Document created",
           description: "Your document was created successfully",
@@ -98,7 +110,7 @@ export const Item = ({
         <div className="shrink-0 mr-2 text-[18px]">{documentIcon}</div>
       ) : (
         Icon && (
-          <Icon className="shrink-0 h-[18px] mr-2 text-muted-foreground" />
+          <Icon className="shrink-0 h-[18px] mr-2 text-muted-foreground w-[18px] " />
         )
       )}
       <span className="truncate">{label}</span>

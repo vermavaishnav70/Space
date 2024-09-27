@@ -14,7 +14,7 @@ import {
   Trash,
 } from "lucide-react";
 import { Navbar } from "./navbar";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import UserItem from "./UserItem";
@@ -37,6 +37,7 @@ import { toast } from "@/hooks/use-toast";
 
 const Navigation = () => {
   const params = useParams();
+  const router = useRouter();
   const pathname = usePathname();
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isResizingRef = useRef(false);
@@ -134,6 +135,7 @@ const Navigation = () => {
           title: "Document created",
           description: "Your document was created successfully",
         });
+        router.push(`/document/${res}`);
         return res; // Optional if you need to handle the document
       })
       .catch((err) => {

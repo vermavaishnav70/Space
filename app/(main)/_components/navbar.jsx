@@ -5,7 +5,7 @@ import { MenuIcon } from "lucide-react";
 import { Title } from "./title";
 import { Banner } from "./Banner";
 import { Menu } from "./Menu";
-// import { Publish } from "./Publish";
+import { Publish } from "./Publish";
 export const Navbar = ({ isCollapsed, ResetWidth }) => {
   const params = useParams();
   const document = useQuery(
@@ -41,6 +41,7 @@ export const Navbar = ({ isCollapsed, ResetWidth }) => {
         <div className="flex w-full items-center justify-between">
           <Title initialData={document} />  
           <div className="flex items-center gap-x-4">
+            <Publish  initialData={document} />
             <Menu documentId={document._id} /></div> 
         </div>
       </nav>

@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
 import { useToast } from "@/hooks/use-toast";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 const DashBoard = () => {
   const { toast } = useToast();
   const { user } = useUser();
+  const router = useRouter();
   const create = useMutation(api.documents.create);
   const onCreate = () => {
     const promise = create({ title: "Untitled" });
@@ -17,6 +19,7 @@ const DashBoard = () => {
           title: "Document created",
           description: "Your document was created successfully",
         });
+        router.push(`/document/${res}`);
         return res; // Optional if you need to handle the document
       })
       .catch((err) => {

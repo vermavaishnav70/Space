@@ -25,7 +25,6 @@ export const Toolbar = ({ initialData, preview }) => {
       inputRef.current?.setSelectionRange(0, inputRef.current.value.length);
     }, 0);
   };
-
   const disabledInput = () => {
     setIsEditing(false);
   };

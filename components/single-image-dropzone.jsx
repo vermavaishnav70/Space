@@ -1,8 +1,7 @@
 "use client";
 
-import { formatFileSize } from "@edgestore/react/utils";
 import { UploadCloudIcon, X } from "lucide-react";
-import * as React from "react";
+import React, { useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 import { twMerge } from "tailwind-merge";
 import { Spinner } from "./spinner";
@@ -38,11 +37,11 @@ const SingleImageDropzone = React.forwardRef(
     { dropzoneOptions, width, height, value, className, disabled, onChange },
     ref
   ) => {
-    const imageUrl = React.useMemo(() => {
+    const imageUrl = useMemo(() => {
       if (typeof value === "string") {
-        return value;
+        return value; // Use URL directly if a string is passed
       } else if (value) {
-        return URL.createObjectURL(value);
+        return URL.createObjectURL(value); // Create a base64 URL for the file
       }
       return null;
     }, [value]);
@@ -62,13 +61,13 @@ const SingleImageDropzone = React.forwardRef(
       onDrop: (acceptedFiles) => {
         const file = acceptedFiles[0];
         if (file) {
-          onChange?.(file);
+          onChange?.(file); // Call onChange with the file
         }
       },
       ...dropzoneOptions,
     });
 
-    const dropZoneClassName = React.useMemo(
+    const dropZoneClassName = useMemo(
       () =>
         twMerge(
           variants.base,
@@ -90,7 +89,7 @@ const SingleImageDropzone = React.forwardRef(
       ]
     );
 
-    const errorMessage = React.useMemo(() => {
+    const errorMessage = useMemo(() => {
       if (fileRejections[0]) {
         const { errors } = fileRejections[0];
         if (errors[0]?.code === "file-too-large") {
@@ -107,11 +106,11 @@ const SingleImageDropzone = React.forwardRef(
     }, [fileRejections, dropzoneOptions]);
 
     return (
-        <div className="relative"> 
-        {disabled &&( 
-        <div className="flex items-center justify-center absolute inset-y-0 h-full z-50 bg-background/80 w-full">
-        <Spinner />
-        </div>
+      <div className="relative">
+        {disabled && (
+          <div className="absolute inset-y-0 z-50 flex h-full w-full items-center justify-center bg-background/80">
+            <Spinner size="md" />
+          </div>
         )}
         <div
           {...getRootProps({
@@ -133,7 +132,9 @@ const SingleImageDropzone = React.forwardRef(
           ) : (
             <div className="flex flex-col items-center justify-center text-xs text-gray-400">
               <UploadCloudIcon className="mb-2 h-7 w-7" />
-              <div className="text-gray-400">Click or drag image </div>
+              <div className="text-gray-400">
+                Click or drag to this area to upload
+              </div>
             </div>
           )}
 
@@ -142,7 +143,7 @@ const SingleImageDropzone = React.forwardRef(
               className="group absolute right-0 top-0 -translate-y-1/4 translate-x-1/4 transform"
               onClick={(e) => {
                 e.stopPropagation();
-                onChange?.(undefined);
+                onChange?.(undefined); // Call onChange with undefined to clear the file
               }}
             >
               <div className="flex h-5 w-5 items-center justify-center rounded-md border border-solid border-gray-500 bg-white transition-all duration-300 hover:h-6 hover:w-6 dark:border-gray-400 dark:bg-black">
@@ -163,20 +164,19 @@ const SingleImageDropzone = React.forwardRef(
 );
 SingleImageDropzone.displayName = "SingleImageDropzone";
 
-const Button = React.forwardRef(({ className, ...props }, ref) => {
-  return (
-    <button
-      className={twMerge(
-        "focus-visible:ring-ring inline-flex cursor-pointer items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50",
-        "border border-gray-400 text-gray-400 shadow hover:bg-gray-100 hover:text-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-700",
-        "h-6 rounded-md px-2 text-xs",
-        className
-      )}
-      ref={ref}
-      {...props}
-    />
-  );
-});
-Button.displayName = "Button";
-export { SingleImageDropzone };
+function formatFileSize(bytes) {
+  if (!bytes) {
+    return "0 Bytes";
+  }
+  bytes = Number(bytes);
+  if (bytes === 0) {
+    return "0 Bytes";
+  }
+  const k = 1024;
+  const dm = 2;
+  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+}
 
+export { SingleImageDropzone };

@@ -9,12 +9,12 @@ import { useOrigin } from "@/hooks/useOrigin";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useState } from "react";
-import { toast } from "sonner";
+import { toast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Check, Copy, Divide, Globe } from "lucide-react";
 
 
-export const Publish = ({ initialData }) => {
+export const  Publish = ({ initialData }) => {
   const origin = useOrigin();
   const update = useMutation(api.documents.update);
 
@@ -23,26 +23,27 @@ export const Publish = ({ initialData }) => {
 
   const url = `${origin}/preview/${initialData._id}`;
 
-  const onPublish = () => {
-    setIsSubmitting(true);
+const onPublish = () => {
+  setIsSubmitting(true);
 
-    const promise = update({
-      id: initialData._id,
-      isPublished: true,
-    }).finally(() => setIsSubmitting(false));
-    promise.then(() => {
-        toast({
-          title: "Note published",
-          description: "Your note was published successfully",
-        })
-    }).catch((err) => {
-        toast({
-          title: "Error",
-          description:
-            "An error occurred while publishing your note please try again later",
-        })  
+  update({
+    id: initialData._id,
+    isPublished: true,
+  })
+    .then((res) => {
+      toast({
+        title: "Note published",
+        description: "Your note was published successfully",
+      });
     })
-  };
+    .catch((err) => {
+      toast({
+        title: "Error",
+        description: "An error occurred while publishing your note",
+      });
+    })
+    .finally(() => setIsSubmitting(false));
+};
 
   const onUnpublish = () => {
     setIsSubmitting(true);

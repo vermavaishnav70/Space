@@ -1,7 +1,9 @@
 import { create } from "zustand";
 
 export const useCoverImg = create((set) => ({
-    isOpen: false,
-    onOpen: () => set({ isOpen: true }),
-    onClose: () => set({ isOpen: false }),
+  url: undefined,
+  isOpen: false,
+  onOpen: () => set({ isOpen: true, url: undefined }),
+  onClose: () => set({ isOpen: false, url: undefined }),
+  onReplace: (newUrl) => set({ isOpen: true, url: newUrl }),
 }));

@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { Switch } from "./ui/switch";
-import { useState } from "react";
+import { use, useState } from "react";
 import { useEffect } from "react";
 export const ModeToggle = () => {
   const [mounted, setMounted] = useState(false);
@@ -26,7 +26,6 @@ export const ModeToggle = () => {
       setIsDark(false);
     }
   };
-
   return (
     <Switch
       checked={isDark}
