@@ -19,18 +19,11 @@ import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import UserItem from "./UserItem";
 import { Item } from "./Item";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import DocumentList from "./documentList";
 import { TrashBox } from "./trashBox";
-import { Label } from "@/components/ui/label";
 import { useSearch } from "@/hooks/use-search";
 import { useSettings } from "@/hooks/use-setting";
 import { toast } from "@/hooks/use-toast";
@@ -85,7 +78,7 @@ const Navigation = () => {
     }
     if (sidebarRef.current && navbarRef.current) {
       sidebarRef.current.style.width = `${newWidth}px`;
-      navbarRef.current.style.setProperty("left", `$newWidthpx`);
+      navbarRef.current.style.setProperty("left", `${newWidth}px`);
       navbarRef.current.style.setProperty(
         "width",
         `calc(100% - ${newWidth}px)`
@@ -114,18 +107,18 @@ const Navigation = () => {
       setTimeout(() => setIsResetting(false), 300);
     }
   };
-
   const collapse = () => {
     if (sidebarRef.current && navbarRef.current) {
       setIsCollapsed(true);
       setIsResetting(true);
-    }
+    
     sidebarRef.current.style.width = "0";
     navbarRef.current.style.setProperty("left", "0");
     navbarRef.current.style.setProperty("width", "100%");
     setTimeout(() => {
       setIsResetting(false);
     }, 300);
+    }
   };
   const handleCreate = () => {
     const promise = create({ title: "Untitled" });
@@ -151,7 +144,7 @@ const Navigation = () => {
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar h-full bg-secondary overflow-y-auto relative flex w-64 flex-col z-[300]",
+          "group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col z-[300]",
           isResetting && "transition-all ease-in-out duration-300",
           isMobile && "w-0"
         )}
@@ -180,7 +173,7 @@ const Navigation = () => {
               <Item label="Trash" Icon={Trash} />
             </PopoverTrigger>
             <PopoverContent side={isMobile ? "bottom" : "right"}>
-              <TrashBox />{" "}
+              <TrashBox />
             </PopoverContent>
           </Popover>
         </div>
@@ -196,18 +189,23 @@ const Navigation = () => {
       <div
         ref={navbarRef}
         className={cn(
-          "absolute z-[300] top-0 left-68 w-[calc(100%-240px)] ",
+          "absolute z-[300] top-0 left-60 w-[calc(100%-240px)] ",
           isResetting && "transition-all ease-in-out duration-300",
           isMobile && "left-0 w-full"
         )}
       >
         {!!params.documentId ? (
-          <Navbar ResetWidth={resetWidth} isCollapsed={isCollapsed} />
+          <Navbar isCollapsed={isCollapsed} onResetWidth={resetWidth} />
         ) : (
-          <nav className="bg-transparent px-3 py-2 w-full">
+          <nav
+            className={cn(
+              "w-full bg-transparent px-3 py-2",
+              !isCollapsed && "p-0"
+            )}
+          >
             {isCollapsed && (
               <MenuIcon
-                onClick={() => resetWidth()}
+                onClick={resetWidth}
                 role="button"
                 className="h-6 w-6 text-muted-foreground"
               />
