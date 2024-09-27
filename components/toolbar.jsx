@@ -1,5 +1,5 @@
 "use client";
-import { Image, X } from "lucide-react";
+import { ImageIcon, X } from "lucide-react";
 import { Smile } from "lucide-react";
 import { IconPicker } from "./icon-picker";
 import { Button } from "./ui/button";
@@ -96,7 +96,7 @@ export const Toolbar = ({ initialData, preview }) => {
             variant="ghost"
             size="sm"
           >
-            <Image className="mr-2 h-4 w-4" />
+            <ImageIcon className="mr-2 h-4 w-4" />
             Add cover
           </Button>
         )}
