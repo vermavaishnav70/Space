@@ -1,7 +1,7 @@
 "use Client";
 import { SingleImageDropzone } from "../single-image-dropzone";
 import { useCoverImg } from "@/hooks/use-cover-img";
-import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useMutation } from "convex/react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
@@ -44,7 +44,9 @@ export const CoverImageModal = () => {
     <Dialog open={coverImg.isOpen} onOpenChange={coverImg.onClose}>
       <DialogContent>
         <DialogHeader>
-          <h2 className="text-center text-lg font-semibold">Cover image</h2>
+          <DialogTitle className="text-center text-lg font-semibold">
+            Cover Image
+          </DialogTitle>
         </DialogHeader>
         <SingleImageDropzone
           className="w-full outline-none"
