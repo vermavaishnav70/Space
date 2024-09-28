@@ -153,7 +153,7 @@ const HeroSection = () => {
                   width={1025}
                   height={500}
                   alt="logo"
-                  className="w-full border p-20 xl:p-40 rounded-xl dark:bg-[#1a1a1a] dark:invert dark:sepia dark:brightness-100 dark:contrast-200"
+                  className="w-full border p-20 xl:p-40 rounded-xl bg-[#f6f5f4] dark:bg-foreground dark:invert dark:sepia-0 dark:brightness-100 dark:contrast-200"
                 />
               </div>
             )}
