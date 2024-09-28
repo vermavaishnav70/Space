@@ -7,7 +7,7 @@ import { Item } from "./Item";
 import { cn } from "@/lib/utils";
 import { FileIcon } from "lucide-react";
 
-const DocumentList = ({ parentDocumentId, level = 0 }) => {
+const DocumentList = ({ parentDocumentId, level = 0,isMobile }) => {
   const params = useParams();
   const router = useRouter();
   const [expanded, setExpanded] = useState({});
@@ -59,15 +59,17 @@ const DocumentList = ({ parentDocumentId, level = 0 }) => {
             id={document._id}
             onClick={() => onRedirect(document._id)}
             label={document.title}
-            icon={FileIcon}
+            Icon={FileIcon}
             documentIcon={document.icon}
             active={params.documentId === document._id}
             level={level}
             onExpand={() => onExpand(document._id)}
             expanded={expanded[document._id]}
+            isMobile={isMobile}
           />
           {expanded[document._id] && (
-            <DocumentList parentDocumentId={document._id} level={level + 1} />
+            <DocumentList parentDocumentId={document._id} level={level + 1} 
+            isMobile={isMobile} />
           )}
         </div>
       ))}

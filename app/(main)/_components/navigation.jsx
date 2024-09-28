@@ -166,8 +166,8 @@ const Navigation = () => {
           <Item label="Settings" Icon={Settings} onClick={settings.onOpen} />
         </div>
         <div className="mt-4">
-          <DocumentList />
-          <Item onClick={handleCreate} Icon={PlusCircle} label="Add a Page" />
+          <DocumentList isMobile={isMobile} />
+          <Item onClick={handleCreate} Icon={PlusCircle} label="Add a Page" isMobile />
           <Popover>
             <PopoverTrigger className="w-full mt-4">
               <Item label="Trash" Icon={Trash} />

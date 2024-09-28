@@ -34,6 +34,7 @@ export const Item = ({
   onClick,
   Icon,
   onExpand,
+  isMobile = false,
 }) => {
   const { user } = useUser();
   const { toast } = useToast();
@@ -44,19 +45,21 @@ export const Item = ({
   const onArchive = (event) => {
     event.stopPropagation();
     if (!id) return;
-    const promise = archive({ id }).then(() => {
-      router.push("/document");
-      toast({
-        title: "Page moved to trash",
-        description: "Your page was moved to trash successfully",
+    const promise = archive({ id })
+      .then(() => {
+        router.push("/document");
+        toast({
+          title: "Page moved to trash",
+          description: "Your page was moved to trash successfully",
+        });
+      })
+      .catch((err) => {
+        toast({
+          title: "Error",
+          description:
+            "An error occurred while deleting your document please try again later",
+        });
       });
-    }).catch((err) => {
-      toast({
-        title: "Error",
-        description:
-          "An error occurred while deleting your document please try again later",
-      });
-    })
   };
   const handleExpand = (event) => {
     event.stopPropagation();
@@ -108,11 +111,10 @@ export const Item = ({
       )}
       {documentIcon ? (
         <div className="shrink-0 mr-2 text-[18px]">{documentIcon}</div>
-      ) : (
-        Icon && (
+      ) : ( 
           <Icon className="shrink-0 h-[18px] mr-2 text-muted-foreground w-[18px] " />
         )
-      )}
+      }
       <span className="truncate">{label}</span>
       {isSearch && (
         <>
@@ -131,7 +133,10 @@ export const Item = ({
             >
               <div
                 role="button"
-                className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-700"
+                className={cn(
+                  "opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-700",
+                  isMobile && "opacity-100 "
+                )}
               >
                 <MoreHorizontal className="h-4 w-4 text-muted-foreground" />
               </div>
@@ -156,7 +161,10 @@ export const Item = ({
           <div
             role="button"
             onClick={onCreate}
-            className="opacity-0 group-hover:opacity-100 rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-700"
+            className={cn(
+              "opacity-0 group-hover:opacity-100  rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-700",
+              isMobile && "opacity-100 "
+            )}
           >
             <PlusIcon className="h-4 w-4 text-muted-foreground " />
           </div>
