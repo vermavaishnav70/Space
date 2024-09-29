@@ -19,41 +19,38 @@ import {
   PiTargetLight,
 } from "react-icons/pi";
 
-const components = [
+const Features = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "Sign In",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Used Sign In by clerk to allow users to sign in and out of app.",
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
+    title: "Editor",
     description:
-      "For sighted users to preview content available behind a link.",
+      "The editor is used to create and edit content in the app.Used Tiptap editor to create and edit content in the app.",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+    title: "Realtime",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Using Realtime to allow users to create and edit content in the app.Using Realtime to allow users to create and edit content in the app.",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    title: "Uploading",
+    description: "Can upload images and videos in the app stored in the database.",
+  },
+];
+
+const Upcoming = [
+  {
+    title: "AI Generation",
+    description:
+      "Integrate AI generation functionality into the app.Using API to generate content in the app.",
   },
   {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
+    title: "Collaboration",
     description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "Currently supports only one user.Using Realtime to allow users to create and edit live content in the app.",
   },
 ];
 
@@ -99,9 +96,9 @@ export function Menu() {
                 <div className="flex items-center gap-1 hover:bg-gray-400/10 p-1 rounded-sm">
                   <PiSparkleLight className="text-2xl mr-2 text-purple-600" />
                   <div>
-                    <a>Bird Assistant</a>
+                    <a>Collabrate</a>
                     <p className="text-gray-400 text-sm font-light">
-                      Integrated AI Assistant
+                      Collaborate with others
                     </p>
                   </div>
                 </div>
@@ -121,7 +118,7 @@ export function Menu() {
                     <div>
                       <a>Customer Stories</a>
                       <p className="text-gray-400 text-sm font-light">
-                        See how teams use bird
+                        See how teams use Space
                       </p>
                     </div>
                   </div>
@@ -130,7 +127,7 @@ export function Menu() {
                     <div>
                       <a>Connections</a>
                       <p className="text-gray-400 text-sm font-light">
-                        Connect your tools to bird
+                        Connect your tools to Space
                       </p>
                     </div>
                   </div>
@@ -140,49 +137,11 @@ export function Menu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Download</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Features</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
+              {Features.map((component) => (
+                <ListItem key={component.title} title={component.title}>
                   {component.description}
                 </ListItem>
               ))}
@@ -190,11 +149,16 @@ export function Menu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/pricing" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Pricing
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuTrigger>Upcoming Features</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {Upcoming.map((component) => (
+                <ListItem key={component.title} title={component.title}>
+                  {component.description}
+                </ListItem>
+              ))}
+            </ul>
+          </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
