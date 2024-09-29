@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "@/components/navbar/navbar";
+import Navbar from "./navbar/navbar";
 import HeroSection from "./hero-section";
 import ThirdSection from "./third-section";
 import FourthSection from "./fourth-section";

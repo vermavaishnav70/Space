@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ConvexClientProvider>
           <EdgeStoreProvider>
-          <ThemeProvider enableSystem={true} attribute="class">
+          <ThemeProvider defaultTheme="light" attribute="class">
           <Toaster position="bottom-center" />
           {children}
           <ModalProvider />

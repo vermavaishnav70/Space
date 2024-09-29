@@ -9,95 +9,125 @@ import {
   PiWatchFill,
 } from "react-icons/pi";
 import Image from "next/image";
-
-const items = [
-  {
-    icon: <PiHouseFill className="text-2xl text-red-500 dark:text-red-400" />,
-    name: "Company wiki",
-    button: (
-      <div className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6">
-        Get template <PiArrowRight className="ml-3 text-sm " />
-      </div>
-    ),
-    image: "/images/company-wiki-template.webp",
-  },
-  {
-    icon: (
-      <PiFlagCheckeredFill className="text-2xl text-sky-600 dark:text-sky-500" />
-    ),
-    name: "Product roadmap",
-    button: (
-      <div className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6">
-        Get template <PiArrowRight className="ml-3 text-sm " />
-      </div>
-    ),
-  },
-  {
-    icon: (
-      <PiCheckCircleFill className="text-2xl text-orange-500 dark:text-orange-400" />
-    ),
-    name: "OKRs",
-    button: (
-      <div className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6">
-        Get template <PiArrowRight className="ml-3 text-sm " />
-      </div>
-    ),
-  },
-  {
-    icon: (
-      <PiClipboardLight className="text-2xl text-green-500 dark:text-green-400" />
-    ),
-    name: "Meeting notes",
-    button: (
-      <div className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6">
-        Get template <PiArrowRight className="ml-3 text-sm " />
-      </div>
-    ),
-  },
-  {
-    icon: (
-      <PiAirplaneFill className="text-2xl text-red-500 dark:text-red-400" />
-    ),
-    name: "Vacation Planner",
-    button: (
-      <div className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6">
-        Get template <PiArrowRight className="ml-3 text-sm " />
-      </div>
-    ),
-  },
-  {
-    icon: (
-      <PiCalendarCheckFill className="text-2xl text-emerald-500 dark:text-emerald-400" />
-    ),
-    name: "Editorial calendar",
-    button: (
-      <div className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6">
-        Get template <PiArrowRight className="ml-3 text-sm " />
-      </div>
-    ),
-  },
-
-  {
-    icon: (
-      <PiWatchFill className="text-2xl text-indigo-500 dark:text-indigo-400" />
-    ),
-    name: "Habit tracker",
-    button: (
-      <div className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6">
-        Get template <PiArrowRight className="ml-3 text-sm " />
-      </div>
-    ),
-  },
-];
+import { useRouter } from "next/navigation";
 
 const SeventhSection = () => {
+  const router = useRouter();
+  
+  const handleTemplate = () => {
+    router.push("/contact-me");
+  };
+  
+  const items = [
+    {
+      icon: <PiHouseFill className="text-2xl text-red-500 dark:text-red-400" />,
+      name: "Company wiki",
+      button: (
+        <div
+          onClick={handleTemplate}
+          className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6"
+        >
+          Get template <PiArrowRight className="ml-3 text-sm " />
+        </div>
+      ),
+      image: "/images/company-wiki-template.webp",
+    },
+    {
+      icon: (
+        <PiFlagCheckeredFill className="text-2xl text-sky-600 dark:text-sky-500" />
+      ),
+      name: "Product roadmap",
+      button: (
+        <div
+          onClick={handleTemplate}
+          className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6"
+        >
+          Get template <PiArrowRight className="ml-3 text-sm " />
+        </div>
+      ),
+    },
+    {
+      icon: (
+        <PiCheckCircleFill className="text-2xl text-orange-500 dark:text-orange-400" />
+      ),
+      name: "OKRs",
+      button: (
+        <div
+          onClick={handleTemplate}
+          className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6"
+        >
+          Get template <PiArrowRight className="ml-3 text-sm " />
+        </div>
+      ),
+    },
+    {
+      icon: (
+        <PiClipboardLight className="text-2xl text-green-500 dark:text-green-400" />
+      ),
+      name: "Meeting notes",
+      button: (
+        <div
+          onClick={handleTemplate}
+          className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6"
+        >
+          Get template <PiArrowRight className="ml-3 text-sm " />
+        </div>
+      ),
+    },
+    {
+      icon: (
+        <PiAirplaneFill className="text-2xl text-red-500 dark:text-red-400" />
+      ),
+      name: "Vacation Planner",
+      button: (
+        <div
+          onClick={handleTemplate}
+          className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6"
+        >
+          Get template <PiArrowRight className="ml-3 text-sm " />
+        </div>
+      ),
+    },
+    {
+      icon: (
+        <PiCalendarCheckFill className="text-2xl text-emerald-500 dark:text-emerald-400" />
+      ),
+      name: "Editorial calendar",
+      button: (
+        <div
+          onClick={handleTemplate}
+          className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6"
+        >
+          Get template <PiArrowRight className="ml-3 text-sm " />
+        </div>
+      ),
+    },
+  
+    {
+      icon: (
+        <PiWatchFill className="text-2xl text-indigo-500 dark:text-indigo-400" />
+      ),
+      name: "Habit tracker",
+      button: (
+        <div
+          onClick={handleTemplate}
+          className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6"
+        >
+          Get template <PiArrowRight className="ml-3 text-sm " />
+        </div>
+      ),
+    },
+  ];
   return (
     <>
       <div className="flex flex-col pt-32 items-center justify-center">
         <div className="text-3xl xl:text-5xl font-medium justify-center items-center flex dark:text-white">
           Endless ways to use it
         </div>
-        <div className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6">
+        <div
+          onClick={handleTemplate}
+          className="text-sky-500 dark:text-sky-400 flex items-center hover:underline hover:cursor-pointer pt-6"
+        >
           Browse all templates <PiArrowRight className="ml-3 text-sm " />
         </div>
       </div>
