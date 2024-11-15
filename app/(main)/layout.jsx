@@ -1,12 +1,14 @@
 "use client";
+
 import { Spinner } from "@/components/spinner";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Navigation from "./_components/navigation";
 import { SearchCommand } from "@/components/search-command";
 import { useConvexAuth } from "convex/react";
 
-const MainLayout = ({ children}) => {
+const MainLayout = ({ children }) => {
   const { isAuthenticated, isLoading } = useConvexAuth();
+  const router = useRouter();
 
   if (isLoading) {
     return (
@@ -17,7 +19,9 @@ const MainLayout = ({ children}) => {
   }
 
   if (!isAuthenticated) {
-    return redirect("/");
+    // Use client-side navigation for unauthenticated users
+    router.push("/");
+    return null; // Prevent further rendering
   }
 
   return (
@@ -30,4 +34,5 @@ const MainLayout = ({ children}) => {
     </div>
   );
 };
+
 export default MainLayout;
