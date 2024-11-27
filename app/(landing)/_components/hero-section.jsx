@@ -24,7 +24,10 @@ const tabs = [
     feature: "Seamless Teamwork",
     description: "Enhance team productivity with collaborative features",
     more: (
-      <div className="text-purple-600 flex items-center">
+      <div
+        onClick={() => window.scrollTo({ top: 5800, behavior: "smooth" })}
+        className="text-purple-600 flex items-center"
+      >
         Learn more <PiArrowRight className="ml-1 text-sm" />
       </div>
     ),
@@ -37,7 +40,10 @@ const tabs = [
     name: "Wikis",
     description: "Centralize your knowledge. Make it accessible.",
     more: (
-      <div className="text-red-600 flex items-center">
+      <div
+        onClick={() => window.scrollTo({ top: 5800, behavior: "smooth" })}
+        className="text-red-600 flex items-center"
+      >
         Learn more <PiArrowRight className="ml-1 text-sm" />
       </div>
     ),
@@ -50,7 +56,10 @@ const tabs = [
     name: "Projects",
     description: "Manage complex projects without the chaos",
     more: (
-      <div className="text-blue-600 flex items-center">
+      <div
+        onClick={() => window.scrollTo({ top: 5800, behavior: "smooth" })}
+        className="text-blue-600 flex items-center"
+      >
         Learn more <PiArrowRight className="ml-1 text-sm" />
       </div>
     ),
@@ -63,7 +72,10 @@ const tabs = [
     name: "Docs",
     description: "Simple, powerful, beautiful. Next-gen notes & docs.",
     more: (
-      <div className="text-yellow-600 flex items-center">
+      <div
+        onClick={() => window.scrollTo({ top: 5800, behavior: "smooth" })}
+        className="text-yellow-600 flex items-center"
+      >
         Learn more <PiArrowRight className="ml-1 text-sm" />
       </div>
     ),
