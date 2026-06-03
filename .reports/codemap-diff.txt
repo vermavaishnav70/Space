@@ -1,0 +1,46 @@
+Space Codemaps Scan Report
+==========================
+Timestamp: 2026-06-04T03:44:00+05:30
+Scanner: Antigravity Codebase Specialist
+
+Summary of Changes
+------------------
+- Initial generation of the Space Codemaps directory.
+- Created docs/CODEMAPS/INDEX.md as the main entry point.
+- Created docs/CODEMAPS/architecture.md to map high-level data flows.
+- Created docs/CODEMAPS/frontend.md to map routes and components.
+- Created docs/CODEMAPS/backend.md to map API endpoints and Convex functions.
+- Created docs/CODEMAPS/data.md to map the database entities and indexes.
+- Created docs/CODEMAPS/dependencies.md to map packages and service integrations.
+
+Files Added
+-----------
+- .env.example
+- docs/CONTRIBUTING.md
+- docs/RUNBOOK.md
+- docs/CODEMAPS/INDEX.md
+- docs/CODEMAPS/architecture.md
+- docs/CODEMAPS/frontend.md
+- docs/CODEMAPS/backend.md
+- docs/CODEMAPS/data.md
+- docs/CODEMAPS/dependencies.md
+
+Files Modified
+--------------
+- README.md (Aligned feature description with correct technology stack, added deep-dive technical layout)
+- .gitignore (Ignored .agent/ directory)
+
+New Dependencies Detected
+-------------------------
+- Clerk (Identity gate)
+- Convex (Reactive database engine)
+- EdgeStore (Media bucket service)
+- BlockNote (Rich text canvas)
+- Nodemailer (SMTP email relay)
+
+Architecture Mapping Status
+---------------------------
+- Routes mapped: 100%
+- DB Models mapped: 100%
+- Components mapped: 100%
+- Staleness warning check: All docs generated fresh today. No stale documents detected.
